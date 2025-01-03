@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ExperimentResult {
+  id           Int      @id @default(autoincrement())
+  prompt       String
+  modelName    String
+  provider     String
+  response     String   @db.Text
+  responseTime Float
+  timestamp    DateTime @default(now())
+  metrics      Metrics?
+}
+
+model Metrics {
+  id                 Int              @id @default(autoincrement())
+  experimentResultId Int              @unique
+  experimentResult   ExperimentResult @relation(fields: [experimentResultId], references: [id])
+  accuracy          Float?
+  relevancy         Float?
+  toxicity          Float?
+  bias              Float?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+}

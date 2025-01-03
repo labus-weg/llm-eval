@@ -8,7 +8,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.33.1",
     "@prisma/client": "^6.1.0",
@@ -21,5 +20,6 @@
     "prisma": "^6.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
-  }
+  },
+  "description": ""
 }
